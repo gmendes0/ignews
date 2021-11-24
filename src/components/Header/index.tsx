@@ -1,3 +1,4 @@
+import { MobileMenu } from "../MobileMenu";
 import { SignInButton } from "../SignInButton";
 import styles from "./styles.module.scss";
 
@@ -15,6 +16,8 @@ export function Header() {
         </nav>
 
         <SignInButton />
+
+        <MobileMenu />
       </div>
     </header>
   );

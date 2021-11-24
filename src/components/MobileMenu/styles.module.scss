@@ -1,0 +1,29 @@
+.menuButton {
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    border: none;
+
+    padding: 0.5rem;
+
+    background: none;
+
+    > svg {
+      width: 2rem;
+      height: 2rem;
+
+      font-weight: 700;
+      color: var(--white);
+    }
+  }
+}
+
+.mobileNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
