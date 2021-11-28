@@ -23,7 +23,60 @@
 }
 
 .mobileNav {
+  position: fixed;
+  top: 5rem;
+  left: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 100vw;
+  height: calc(100vh - 5rem);
+
+  background: var(--gray-900);
+
+  z-index: 10;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    a {
+      position: relative;
+      display: inline-block;
+      padding: 0 1rem;
+      height: 5rem;
+      line-height: 5rem;
+      color: var(--gray-300);
+      transition: color 0.2s;
+
+      &:hover {
+        color: var(--white);
+      }
+
+      &.active {
+        color: var(--wite);
+        font-weight: 700;
+
+        &::after {
+          content: "";
+          background: var(--yellow-500);
+          height: 0.1875rem;
+          width: 100%;
+
+          position: absolute;
+          bottom: 0;
+          left: 0;
+
+          border-radius: 10px 10px 0 0;
+        }
+      }
+    }
+  }
 }
