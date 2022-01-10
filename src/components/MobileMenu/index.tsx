@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import { SignInButton } from "../SignInButton";
 
 import styles from "./styles.module.scss";
 
