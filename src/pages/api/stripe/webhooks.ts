@@ -45,7 +45,7 @@ export default async function handler(
 
         event = stripe.webhooks.constructEvent(
           buf.toString(),
-          secret,
+          String(secret),
           process.env.STRIPE_WEBHOOK_SECRET,
           Number(process.env.STRIPE_WEBHOOK_TOLERANCE) || 300
         );
