@@ -17,3 +17,11 @@ Renderiza um componente de maneira "virtual", de forma que a gente consiga obter
 ## Mocks
 
 Sempre que algo que estamos testando precisa de uma funcionalidade externa ao componente, utilizamos os mocks.
+
+## CSS Modules
+
+Para os testes entenderem os CSS modules precisamos instalar a lib:
+
+```bash
+yarn add -D identity-obj-proxy
+```
