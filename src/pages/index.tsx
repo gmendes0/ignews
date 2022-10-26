@@ -4,17 +4,16 @@ import { SubscribeButton } from "../components/SubscribeButton";
 import { stripe } from "../services/stripe";
 
 import styles from "../styles/home.module.scss";
-import { price } from "../utils/number";
+import { price as priceFormat } from "../utils/number";
 
 type HomeProps = {
   product: {
     priceID: string;
-    amount: number;
+    amount: string;
   };
-  generatedAt: string;
 };
 
-const Home: NextPage<HomeProps> = ({ product, generatedAt }) => {
+const Home: NextPage<HomeProps> = ({ product }) => {
   return (
     <>
       <Head>
@@ -32,11 +31,11 @@ const Home: NextPage<HomeProps> = ({ product, generatedAt }) => {
           <p>
             Get access to all the publications
             <span>
-              <br /> for {price(product.amount)} month
+              <br /> for {product.amount} month
             </span>
           </p>
 
-          <SubscribeButton priceID={product.priceID} />
+          <SubscribeButton />
         </section>
 
         <img src="/images/avatar.svg" alt="girl coding" />
@@ -50,7 +49,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const product = {
     priceID: price.id,
-    amount: price.unit_amount ? price.unit_amount / 100 : NaN, // Stripe retorna o preço em centavos
+    amount: priceFormat((price?.unit_amount ?? NaN) / 100), // Stripe retorna o preço em centavos
   };
 
   return {
