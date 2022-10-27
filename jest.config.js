@@ -9,6 +9,15 @@ const config = {
   moduleNameMapper: {
     "^.+\\.(?:css|scss|sass)$": "identity-obj-proxy",
   },
+  collectCoverage: true,
+  collectCoverageFrom: [
+    "src/**/*.tsx",
+    "!node_modules/**",
+    "!src/**/*.spec.tsx",
+    "!src/**/_app.tsx",
+    "!src/**/_document.tsx",
+  ],
+  coverageReporters: ["lcov", "json"],
 };
 
 module.exports = config;
