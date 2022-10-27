@@ -31,9 +31,18 @@ describe("Preview page", () => {
 
     render(<Preview post={post} />);
 
+    // Playground URL - é útil para debug/pegar dicas de como selecionar elementos
+    // screen.logTestingPlaygroundURL();
+
     expect(screen.getByText("fake-title")).toBeInTheDocument();
     expect(screen.getByText("fake-content")).toBeInTheDocument();
     expect(screen.getByText("Wanna continue reading?")).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /subscribe now/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /subscribe now/i })
+    ).toHaveAttribute("href", "/");
     expect(pushMocked).not.toHaveBeenCalled();
   });
 
