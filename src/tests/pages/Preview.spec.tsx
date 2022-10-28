@@ -1,7 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/dist/client/router";
-import Preview, { getStaticProps } from "../../pages/posts/preview/[slug]";
+import Preview, {
+  getStaticPaths,
+  getStaticProps,
+} from "../../pages/posts/preview/[slug]";
 import { getPrismicClient } from "../../services/prismic";
 
 const post = {
@@ -99,6 +102,17 @@ describe("Preview page", () => {
             updated_at: "26 de outubro de 2022",
           },
         },
+      })
+    );
+  });
+
+  it("loads paths", async () => {
+    const staticPathsResponse = await getStaticPaths({});
+
+    expect(staticPathsResponse).toEqual(
+      expect.objectContaining({
+        paths: [expect.objectContaining({ params: { slug: "-introducao" } })],
+        fallback: "blocking",
       })
     );
   });
